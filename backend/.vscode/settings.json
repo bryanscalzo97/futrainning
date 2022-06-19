@@ -1,0 +1,10 @@
+{
+    "eslint.run": "onType",
+    "eslint.format.enable": true,
+    "eslint.validate": [
+        "javascript"
+    ],
+    "[javascript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    }
+}
