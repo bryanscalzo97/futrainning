@@ -8,5 +8,5 @@ app.use(express.json()) // ParseBody cuando viene en formato JSON
 app.use('/', GameRoute)
 
 app.listen(2022, function () {
-  console.log('Hola')
+
 })
