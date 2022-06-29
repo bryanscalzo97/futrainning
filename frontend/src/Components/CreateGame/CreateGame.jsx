@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router'
+import './styles.css'
 
 function CreateGame () {
   const [location, setLocation] = useState('')
   const [date, setDate] = useState('')
+
+  const navigate = useNavigate()
 
   function handleSubmit (event) {
     event.preventDefault()
@@ -13,11 +17,15 @@ function CreateGame () {
     fetch(('/api/Games'), {
       method: 'POST',
       body: JSON.stringify(_datos),
-      headers: { 'Content-type': 'application/json; charset=UTF-8' }
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+        'auth-token': localStorage.getItem('token')
+      }
     })
       .then(response => response.json())
       .then(json => console.log(json))
       .then(alert('Se creo el juego correctamente'))
+      .then(navigate('/'))
   }
 
   function handleLocation (event) {
@@ -29,27 +37,24 @@ function CreateGame () {
   }
 
   return (
-    <>
-    <form onSubmit={handleSubmit}>
-                <label>
-                    Lugar:
-                    <input
+    <div className='container'>
+      <div className='row'>
+          <form onSubmit={handleSubmit} className=' formulario'>
+        <h1>Crear un nuevo juego:</h1>
+                <label className='d-block'>Lugar:</label>
+                <input className='d-block'
                         type="text"
                         onChange={handleLocation}
                         value={location} />
-                </label>
-                <br />
-                <label>
-                    Fecha:
-                    <input
+                <label className='d-block'>Fecha:</label>
+                <input className='d-block'
                         type="datetime-local"
                         onChange={handleDate}
                         value={date} />
-                </label>
-                <br />
-                <button className='btn btn-primary' type="submit">Crear Juego</button>
-    </form>
-    </>
+                <button className='btn btn-primary d-block btn-submit' type="submit">Crear Juego</button>
+          </form>
+      </div>
+    </div>
   )
 }
 

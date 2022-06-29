@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router'
+import { useParams, useNavigate } from 'react-router'
 
 function EditGame () {
   const params = useParams()
   const [location, setLocation] = useState('')
   const [date, setDate] = useState('')
 
+  const navigate = useNavigate()
+
   useEffect(() => {
     fetch(`/api/Games/id/${params.idUser}`, {
-      method: 'POST'
+      method: 'POST',
+      headers: {
+        // 'auth-token': TOKEN
+        'auth-token': localStorage.getItem('token')
+      }
+
     })
       .then(res => res.json())
       .then((data) => { setLocation(data.lugar); setDate(data.fecha) })
@@ -24,11 +31,15 @@ function EditGame () {
     fetch(('/api/Games'), {
       method: 'PATCH',
       body: JSON.stringify(_datos),
-      headers: { 'Content-type': 'application/json; charset=UTF-8' }
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+        'auth-token': localStorage.getItem('token')
+      }
     })
       .then(response => response.json())
       .then(json => console.log(json))
       .then(alert('Se edito el juego correctamente'))
+      .then(navigate('/'))
   }
 
   function handleLocation (event) {

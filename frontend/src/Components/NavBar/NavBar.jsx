@@ -30,7 +30,7 @@ function NavBar () {
     <Navbar.Brand href="#">Futraining</Navbar.Brand>
     </Link>
     <Link to="/createGame">
-    <Navbar.Brand href="#">Create Game</Navbar.Brand>
+    <Navbar.Brand href="#">Create Game(ADM)</Navbar.Brand>
     </Link>
     <Navbar.Toggle aria-controls="Futrainning" />
     <Navbar.Collapse id="navbarScroll">

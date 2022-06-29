@@ -1,0 +1,23 @@
+.formulario {
+    padding-top: 5em;
+    padding-bottom: 15em;
+}
+
+input {
+    padding: 0.50rem;
+}
+
+input,
+textarea {
+    display: block;
+    width: 100%;
+}
+
+.mg {
+    margin-bottom: 1em;
+}
+
+.btn-submit {
+    width: 100%;
+    margin-top: 1em;
+}

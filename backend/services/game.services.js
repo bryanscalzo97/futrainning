@@ -37,7 +37,7 @@ async function findByID (id) {
 
 async function updateGame (newGame) {
   return conexion(async function (db) {
-    const category = await db.collection('juegos').replaceOne({ _id: ObjectId(newGame._id) }, { lugar: newGame.lugar, fecha: newGame.fecha, jugadores: [{ nombre: 'messi', email: 'messi@gmail.com' }, { nombre: 'Ronaldo', email: 'ronaldo@gmail.com' }] })
+    const category = await db.collection('juegos').updateOne({ _id: ObjectId(newGame._id) }, { $set: { lugar: newGame.lugar, fecha: newGame.fecha } })
     return category
   })
 }

@@ -1,25 +1,41 @@
-import * as GameModel from '../services/game.services.js'
 
-function viewTeams (req, res) {
-  GameModel.viewTeams()
-    .then(function (teams) {
-      if (teams) {
-        res.status(200).json(teams)
-      } else {
-        res.status(404).json({ message: 'No se encontraron equipos' })
-      }
-    })
-}
+import * as GameModel from '../services/game.services.js'
+import jwt from 'jsonwebtoken'
+// function viewTeams (req, res) {
+//   GameModel.viewTeams()
+//     .then(function (teams) {
+//       if (teams) {
+//         res.status(200).json(teams)
+//       } else {
+//         res.status(404).json({ message: 'No se encontraron equipos' })
+//       }
+//     })
+// }
 
 function viewGames (req, res) {
-  GameModel.viewGames()
-    .then(function (games) {
-      if (games) {
-        res.status(200).json(games)
-      } else {
-        res.status(404).json({ message: 'No se encontraron juegos' })
-      }
+  let token, user
+  try {
+    token = req.headers['auth-token'] || ''
+    user = jwt.verify(token, 'CLAVE_SECRETA')
+  } catch (err) {
+
+  }
+
+  if (user) {
+    return GameModel.viewGames()
+      .then(function (games) {
+        if (games) {
+          res.status(200).json(games)
+        } else {
+          res.status(404).json({ message: 'No se encontraron juegos' })
+        }
+      })
+  } else {
+    res.status(401).json({
+      message: 'Unauthorizaded'
     })
+  }
+  GameModel.viewGames()
 }
 
 function newGame (req, res) {
@@ -35,6 +51,7 @@ function newGame (req, res) {
 
 function removeGame (req, res) {
   const id = req.body._id
+
   GameModel.removeGame(id)
     .then(function (game) {
       res.status(200).json(game)
@@ -57,6 +74,7 @@ function viewOne (req, res) {
 
 function updateGame (req, res) {
   const newGame = req.body
+  console.log(newGame)
   GameModel.updateGame(newGame)
     .then(function (game) {
       res.status(200).json(game)
@@ -67,7 +85,7 @@ function updateGame (req, res) {
 }
 
 export default {
-  viewTeams,
+  // viewTeams,
   viewGames,
   newGame,
   removeGame,
