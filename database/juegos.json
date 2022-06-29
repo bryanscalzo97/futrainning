@@ -1,0 +1,54 @@
+[{
+  "_id": {
+    "$oid": "62bb03094a6732c03d815404"
+  },
+  "lugar": "Uruguay",
+  "fecha": "2022-06-09T12:36",
+  "jugadores": [
+    {
+      "nombre": "messi",
+      "email": "messi@gmail.com"
+    },
+    {
+      "nombre": "Ronaldo",
+      "email": "ronaldo@gmail.com"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62bba450df60114aaf9accb4"
+  },
+  "lugar": "CABA",
+  "fecha": "2022-06-22T01:05",
+  "jugadores": [
+    {
+      "nombre": "messi",
+      "email": "messi@gmail.com"
+    },
+    {
+      "nombre": "Ronaldo",
+      "email": "ronaldo@gmail.com"
+    },
+    {
+      "_id": {
+        "$oid": "62bba47fdf60114aaf9accb5"
+      },
+      "nombre": "Bryan ",
+      "email": "bryan@gmail.com"
+    },
+    {
+      "_id": {
+        "$oid": "62bc3df6df60114aaf9accb7"
+      },
+      "nombre": "zidane",
+      "email": "zidane@gmail.com"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62bc3e2a20be22a81e55b72b"
+  },
+  "lugar": "Colegiales",
+  "fecha": "2022-06-21T10:01",
+  "jugadores": []
+}]
