@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useLocation, useNavigate } from 'react-router'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 function AttendGame () {
   const location = useLocation()
@@ -13,19 +13,16 @@ function AttendGame () {
     event.preventDefault()
     const _datos = {
       nombre: name,
-      email: mail,
-      _id: data._id
+      email: mail
     }
     if (data.jugadores.length < 11) {
-      fetch(('/api/Games/Player', {
-        headers: {
-          // 'auth-token': TOKEN
-          'auth-token': localStorage.getItem('token')
-        }
-      }), {
+      fetch(`/api/Games/${data._id}/Player`, {
         method: 'POST',
         body: JSON.stringify(_datos),
-        headers: { 'Content-type': 'application/json; charset=UTF-8' }
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+          'auth-token': localStorage.getItem('token')
+        }
       })
         .then(response => response.json())
         .then(json => console.log(json))

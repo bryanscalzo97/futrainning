@@ -1,16 +1,6 @@
 
 import * as GameModel from '../services/game.services.js'
 import jwt from 'jsonwebtoken'
-// function viewTeams (req, res) {
-//   GameModel.viewTeams()
-//     .then(function (teams) {
-//       if (teams) {
-//         res.status(200).json(teams)
-//       } else {
-//         res.status(404).json({ message: 'No se encontraron equipos' })
-//       }
-//     })
-// }
 
 function viewGames (req, res) {
   let token, user
@@ -85,7 +75,6 @@ function updateGame (req, res) {
 }
 
 export default {
-  // viewTeams,
   viewGames,
   newGame,
   removeGame,

@@ -15,7 +15,6 @@ function login (req, res) {
   service.login(req.body)
     .then(user => {
       const token = jwt.sign({ id: user._id, name: user.name }, 'CLAVE_SECRETA')
-      // res.header('auth-token', token).status(200).json(user)
       res.status(200).json({
         user,
         token

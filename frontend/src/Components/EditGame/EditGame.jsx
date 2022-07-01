@@ -9,7 +9,7 @@ function EditGame () {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch(`/api/Games/id/${params.idUser}`, {
+    fetch(`/api/Games/${params.idUser}`, {
       method: 'POST',
       headers: {
         // 'auth-token': TOKEN
