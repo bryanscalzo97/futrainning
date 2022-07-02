@@ -9,9 +9,9 @@ function Game ({ gameItem }) {
   console.log(gameItem)
   const { lugar, fecha, jugadores, _id } = gameItem
   function deleteGame (_id) {
-    fetch(('/api/Games'), {
+    fetch((`/api/Games/${_id}`), {
       method: 'DELETE',
-      body: JSON.stringify({ _id }),
+      // body: JSON.stringify({ _id }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
         'auth-token': localStorage.getItem('token')
@@ -23,19 +23,17 @@ function Game ({ gameItem }) {
     console.log('se enviaron los datos :)')
   }
   console.log(jugadores)
+  // const token = localStorage.getItem('token')
   return (
       <Card className='col-4' style={{ width: '18rem', margin: '1em', padding: '1em' }}>
         <Card.Body>
         <Card.Text>{fecha}</Card.Text>
         <Card.Text>{lugar}</Card.Text>
         <Card.Text>Hacen falta {11 - jugadores.length} jugadores</Card.Text>
-        <Button className='btn btn-danger' onClick={() => deleteGame(_id)} variant="primary">Eliminar Juego(ADM)</Button>
-        <Link to={`/editGame/${_id}`}>
-        <Button className='btn btn-light' variant="primary">Editar el Juego(ADM)</Button>
-        </Link>
-        <Link to= { `/attendGame/${_id}` } state={{ data: gameItem }}>
-        <Button className='btn btn-light' variant="primary">Asistir al juego(USER)</Button>
-        </Link>
+        <Button className='btn btn-danger' onClick={() => deleteGame(_id)} variant="primary">Eliminar Juego</Button>
+         <Link to={`/editGame/${_id}`}>
+         <Button className='btn btn-light' variant="primary">Editar el Juego</Button>
+         </Link>
         </Card.Body>
       </Card>
   )

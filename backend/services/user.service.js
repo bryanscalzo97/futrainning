@@ -11,7 +11,8 @@ async function create (user) {
       const passwordHash = await bcrypt.hash(user.password, salt)
       const userToCreate = {
         ...user,
-        password: passwordHash
+        password: passwordHash,
+        role: 'user'
       }
       await db.collection(COLLECTION_NAME).insertOne(userToCreate)
       return userToCreate

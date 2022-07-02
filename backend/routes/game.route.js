@@ -5,14 +5,14 @@ import { authorization } from '../middlewares/auth.middlewares.js'
 
 const route = express.Router()
 
-route.all('', authorization)
-route.all('/*', authorization)
+// route.all('/', authorization)
+// route.all('/*', authorization)
 
 route.get('/', gameController.viewGames)
-route.post('/', gameController.newGame)
+route.post('/', [authorization], gameController.newGame)
 route.post('/:idGame', gameController.viewOne)
-route.delete('/', gameController.removeGame)
-route.patch('/', gameController.updateGame)
+route.delete('/:idGame', [authorization], gameController.removeGame)
+route.patch('/:idGame', [authorization], gameController.updateGame)
 route.post('/:idGame/Player', playerController.newPlayer)
 
 export default route

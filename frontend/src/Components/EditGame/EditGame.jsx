@@ -24,11 +24,10 @@ function EditGame () {
   function handleSubmit (event) {
     event.preventDefault()
     const _datos = {
-      _id: `${params.idUser}`,
       lugar: location,
       fecha: date
     }
-    fetch(('/api/Games'), {
+    fetch((`/api/Games/${params.idUser}`), {
       method: 'PATCH',
       body: JSON.stringify(_datos),
       headers: {

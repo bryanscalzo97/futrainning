@@ -18,14 +18,20 @@ function PageLogin ({ onLogin }) {
   }
 
   return (
-        <div>
+        <div className='container'>
             <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
-                <label>Email:</label>
-                <input type="text" value={email} onChange={e => setEmail(e.target.value)} />
-                <label>Password:</label>
-                <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-                <button type="submit">Login</button>
+            <form className="row g-3" onSubmit={handleSubmit}>
+              <div className="col-12">
+                <label className="form-label">Email</label>
+                <input type="email" className="form-control" id="inputEmail4" value={email} onChange={e => setEmail(e.target.value)}/>
+              </div>
+              <div className="col-12">
+                <label className="form-label">Password</label>
+                <input type="password" className="form-control" id="inputPassword4" value={password} onChange={e => setPassword(e.target.value)}/>
+              </div>
+              <div className="col-12">
+                <button type="submit" className="btn btn-primary">Sign in</button>
+              </div>
             </form>
             {error && <p>{error}</p>}
         </div>

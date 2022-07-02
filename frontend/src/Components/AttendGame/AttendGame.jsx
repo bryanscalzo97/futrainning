@@ -27,7 +27,7 @@ function AttendGame () {
         .then(response => response.json())
         .then(json => console.log(json))
         .then(alert('Te anotaste al juego correctamente'))
-        .then(navigate('/'))
+        .then(navigate('/Home'))
     } else { alert('Ya esta completo este juego, puedes anotarte en otro') }
   }
 

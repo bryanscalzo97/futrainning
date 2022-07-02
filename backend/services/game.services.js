@@ -35,9 +35,9 @@ async function findByID (id) {
   })
 }
 
-async function updateGame (newGame) {
+async function updateGame (newGame, id) {
   return conexion(async function (db) {
-    const category = await db.collection('juegos').updateOne({ _id: ObjectId(newGame._id) }, { $set: { lugar: newGame.lugar, fecha: newGame.fecha } })
+    const category = await db.collection('juegos').updateOne({ _id: ObjectId(id) }, { $set: { lugar: newGame.lugar, fecha: newGame.fecha } })
     return category
   })
 }

@@ -1,32 +1,43 @@
 
 import * as GameModel from '../services/game.services.js'
-import jwt from 'jsonwebtoken'
+// import jwt from 'jsonwebtoken'
 
 function viewGames (req, res) {
-  let token, user
-  try {
-    token = req.headers['auth-token'] || ''
-    user = jwt.verify(token, 'CLAVE_SECRETA')
-  } catch (err) {
-
-  }
-
-  if (user) {
-    return GameModel.viewGames()
-      .then(function (games) {
-        if (games) {
-          res.status(200).json(games)
-        } else {
-          res.status(404).json({ message: 'No se encontraron juegos' })
-        }
-      })
-  } else {
-    res.status(401).json({
-      message: 'Unauthorizaded'
+  return GameModel.viewGames()
+    .then(function (games) {
+      if (games) {
+        res.status(200).json(games)
+      } else {
+        res.status(404).json({ message: 'No se encontraron juegos' })
+      }
     })
-  }
-  GameModel.viewGames()
 }
+
+// function viewGames (req, res) {
+//   let token, user
+//   try {
+//     token = req.headers['auth-token'] || ''
+//     user = jwt.verify(token, 'CLAVE_SECRETA')
+//   } catch (err) {
+
+//   }
+
+//   if (user) {
+//     return GameModel.viewGames()
+//       .then(function (games) {
+//         if (games) {
+//           res.status(200).json(games)
+//         } else {
+//           res.status(404).json({ message: 'No se encontraron juegos' })
+//         }
+//       })
+//   } else {
+//     res.status(401).json({
+//       message: 'Unauthorizaded'
+//     })
+//   }
+//   GameModel.viewGames()
+// }
 
 function newGame (req, res) {
   const locationGame = req.body
@@ -40,7 +51,7 @@ function newGame (req, res) {
 }
 
 function removeGame (req, res) {
-  const id = req.body._id
+  const id = req.params.idGame
 
   GameModel.removeGame(id)
     .then(function (game) {
@@ -64,8 +75,9 @@ function viewOne (req, res) {
 
 function updateGame (req, res) {
   const newGame = req.body
+  const id = req.params.idGame
   console.log(newGame)
-  GameModel.updateGame(newGame)
+  GameModel.updateGame(newGame, id)
     .then(function (game) {
       res.status(200).json(game)
     })
