@@ -25,7 +25,19 @@ function login (req, res) {
     }))
 }
 
+function viewOne (req, res) {
+  const id = req.params.idUser
+  service.findByID(id)
+    .then(function (user) {
+      res.status(201).json(user)
+    })
+    .catch(function (err) {
+      res.status(500).json({ err })
+    })
+}
+
 export {
   create,
-  login
+  login,
+  viewOne
 }

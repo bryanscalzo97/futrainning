@@ -25,7 +25,12 @@ function EditGame () {
     })
       .then(res => res.json())
       .then((data) => { setDate(data.fecha); setfieldSelected(data.cancha) })
-    fetch('/api/fields')
+    fetch('/api/fields', {
+      headers: {
+        // 'auth-token': TOKEN
+        'auth-token': localStorage.getItem('token')
+      }
+    })
       .then(res => res.json())
       .then((data) => setField(data))
       .then((data) => console.log(data))

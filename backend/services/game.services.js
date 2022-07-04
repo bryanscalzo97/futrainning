@@ -17,7 +17,6 @@ async function viewGames () {
 
 async function newGame (locationGame) {
   const newGame = {
-    // lugar: locationGame.lugar,
     _id: new ObjectId(),
     fecha: locationGame.fecha,
     jugadores: [],

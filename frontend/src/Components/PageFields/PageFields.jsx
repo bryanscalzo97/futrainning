@@ -5,7 +5,12 @@ import NavBarAdmin from '../NavBarAdmin/NavBarAdmin.jsx'
 function PageFields () {
   const [fields, setFields] = useState(null)
   useEffect(() => {
-    fetch('/api/fields')
+    fetch('/api/fields', {
+      headers: {
+        // 'auth-token': TOKEN
+        'auth-token': localStorage.getItem('token')
+      }
+    })
       .then(res => res.json())
       .then((data) => setFields(data))
   }, [])

@@ -1,4 +1,5 @@
 import { conexion } from './database.js'
+import { ObjectId } from 'mongodb'
 import bcrypt from 'bcrypt'
 
 const COLLECTION_NAME = 'usuarios'
@@ -34,7 +35,15 @@ async function login ({ email, password }) {
   })
 }
 
+async function findByID (id) {
+  return conexion(async function (db) {
+    const user = await db.collection('usuarios').find({ _id: ObjectId(id) }).toArray()
+    return { ...user[0], password: undefined }
+  })
+}
+
 export {
   create,
-  login
+  login,
+  findByID
 }

@@ -26,7 +26,7 @@ function CreatePlayingField () {
       .then(response => response.json())
       .then(json => console.log(json))
       .then(alert('Se creo la cancha correctamente'))
-      .then(navigate('/'))
+      .then(navigate('/pageFields'))
   }
 
   function handleLocation (event) {
