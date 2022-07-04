@@ -6,6 +6,9 @@ import CreateGame from '../Components/CreateGame/CreateGame.jsx'
 import EditGame from '../Components/EditGame/EditGame.jsx'
 import AttendGame from '../Components/AttendGame/AttendGame.jsx'
 import PageLogin from '../Components/PageLogin/PageLogin.jsx'
+import CreatePlayingField from '../Components/CreatePlayingField/CreatePlayingField.jsx'
+import PageFields from '../Components/PageFields/PageFields.jsx'
+import EditField from '../Components/EditField/EditField.jsx'
 
 function AppRouter () {
   const navigate = useNavigate()
@@ -29,10 +32,13 @@ function AppRouter () {
       <Route path="/login" element={<PageLogin onLogin={onLogin} />} />
       <Route path="/" element={<AdminPanel />} />
       <Route path="/AdminPanel" element={<AdminPanel />} />
+      <Route path="/createPlayingField" element={<CreatePlayingField />} />
       <Route path="/Home" element={<Home />} />
       <Route path="/createGame" element={<CreateGame />} />
       <Route path="/editGame/:idUser" element={<EditGame />} />
       <Route path="/attendGame/:idGame" element={<AttendGame />} />
+      <Route path="/pageFields" element={<PageFields />} />
+      <Route path="/editField/:idField" element={<EditField />} />
 
     </Routes>
   )

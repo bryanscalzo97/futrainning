@@ -17,9 +17,7 @@ function NavBar () {
   return (
     <Navbar bg="light" expand="lg">
   <Container fluid>
-    <Link to="/home">
     <Navbar.Brand href="#">Futraining</Navbar.Brand>
-    </Link>
     <Navbar.Toggle aria-controls="Futrainning" />
     <Navbar.Collapse id="navbarScroll">
       <Nav

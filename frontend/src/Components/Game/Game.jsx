@@ -7,7 +7,7 @@ import { Link, useNavigate } from 'react-router-dom'
 function Game ({ gameItem }) {
   const navegar = useNavigate()
   console.log(gameItem)
-  const { lugar, fecha, jugadores, _id } = gameItem
+  const { fecha, jugadores, _id, lugarCancha } = gameItem
   function deleteGame (_id) {
     fetch((`/api/Games/${_id}`), {
       method: 'DELETE',
@@ -28,7 +28,7 @@ function Game ({ gameItem }) {
       <Card className='col-4' style={{ width: '18rem', margin: '1em', padding: '1em' }}>
         <Card.Body>
         <Card.Text>{fecha}</Card.Text>
-        <Card.Text>{lugar}</Card.Text>
+        <Card.Text>{lugarCancha}</Card.Text>
         <Card.Text>Hacen falta {11 - jugadores.length} jugadores</Card.Text>
         <Button className='btn btn-danger' onClick={() => deleteGame(_id)} variant="primary">Eliminar Juego</Button>
          <Link to={`/editGame/${_id}`}>

@@ -16,6 +16,9 @@ function CardGameUser ({ gameItem }) {
         <Link to= { `/attendGame/${_id}` } state={{ data: gameItem }}>
         <Button className='btn btn-light' variant="primary">Asistir al juego</Button>
         </Link>
+        {/* <Link to={`/editField/${_id}`}>
+         <Button className='btn btn-light' variant="primary">Editar cancha</Button>
+         </Link> */}
         </Card.Body>
       </Card>
   )

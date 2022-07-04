@@ -3,8 +3,14 @@ import { useParams, useNavigate } from 'react-router'
 
 function EditGame () {
   const params = useParams()
-  const [location, setLocation] = useState('')
+  // const [location, setLocation] = useState('')
   const [date, setDate] = useState('')
+  // aca almaceno todos los campos
+  const [field, setField] = useState(null)
+  // aca tengo el id del campo que esta seleccionado
+  // const [idfield, setidField] = useState(null)
+
+  const [fieldSelected, setfieldSelected] = useState('')
 
   const navigate = useNavigate()
 
@@ -18,13 +24,17 @@ function EditGame () {
 
     })
       .then(res => res.json())
-      .then((data) => { setLocation(data.lugar); setDate(data.fecha) })
+      .then((data) => { setDate(data.fecha); setfieldSelected(data.cancha) })
+    fetch('/api/fields')
+      .then(res => res.json())
+      .then((data) => setField(data))
+      .then((data) => console.log(data))
   }, [])
 
   function handleSubmit (event) {
     event.preventDefault()
     const _datos = {
-      lugar: location,
+      idCancha: fieldSelected,
       fecha: date
     }
     fetch((`/api/Games/${params.idUser}`), {
@@ -41,26 +51,29 @@ function EditGame () {
       .then(navigate('/'))
   }
 
-  function handleLocation (event) {
-    setLocation(event.target.value)
-  }
+  // function handleLocation (event) {
+  //   setLocation(event.target.value)
+  // }
 
   function handleDate (event) {
     setDate(event.target.value)
+  }
+  function handleField (selected) {
+    setfieldSelected(selected.target.value)
   }
 
   return (
     <div>
       <h1>Editar Juego</h1>
       <form onSubmit={handleSubmit}>
-                <label>
+                {/* <label>
                     Lugar:
                     <input
                         type="text"
                         onChange={handleLocation}
                         value={location} />
                 </label>
-                <br />
+                <br /> */}
                 <label>
                     Fecha:
                     <input
@@ -69,6 +82,8 @@ function EditGame () {
                         value={date} />
                 </label>
                 <br />
+                <label className='d-block'>Seleccionar Cancha</label>
+                           { field !== null ? (<select className="form-select" aria-label="Default select example" onChange={handleField} value={fieldSelected} required>{field.map((e) => <option key={e._id} value={e._id}>{e.lugar}</option>)}</select>) : ''}
                 <button className='btn btn-primary' type="submit">Editar Juego</button>
     </form>
     </div>

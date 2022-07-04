@@ -17,15 +17,16 @@ function NavBarAdmin () {
   return (
       <Navbar bg="light" expand="lg">
     <Container fluid>
-      <Link to="/home">
       <Navbar.Brand href="#">Futraining</Navbar.Brand>
+      <Link to="/createGame">
+        <Navbar.Brand href="#">Crear Juego</Navbar.Brand>
       </Link>
-      {(token)
-        ? (<><Link to="/createGame">
-        <Navbar.Brand href="#">Create Game(ADM)</Navbar.Brand>
-        </Link></>)
-        : ''
-      }
+      <Link to="/createPlayingField">
+        <Navbar.Brand href="#">Crear Cancha</Navbar.Brand>
+      </Link>
+      <Link to="/pageFields">
+        <Navbar.Brand href="#">Administrar Canchas</Navbar.Brand>
+      </Link>
       <Navbar.Toggle aria-controls="Futrainning" />
       <Navbar.Collapse id="navbarScroll">
         <Nav

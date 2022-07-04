@@ -18,6 +18,7 @@ route.post('/:idGame/Player', playerController.newPlayer)
 export default route
 // agregar una entidad con los datos de la cancha, cantidad de jugadores por cancha, agregarlo en otra coleccion
 // dentro de las canchas puede estar el id del admin, cada admin tiene su propia cancha
+
 // validaciones para no repetir cancha en horario
 
 // front
