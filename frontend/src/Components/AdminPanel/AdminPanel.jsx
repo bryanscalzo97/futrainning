@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Game from '../Game/Game.jsx'
 import NavBarAdmin from '../NavBarAdmin/NavBarAdmin.jsx'
+import {
+  Stack,
+  Heading
+} from '@chakra-ui/react'
 
 function AdminPanel () {
   const [games, setGames] = useState(null)
@@ -18,7 +22,9 @@ function AdminPanel () {
       <NavBarAdmin />
       <div className='container'>
           <div className='row'>
-          <h1>Panel de admin de juegos:</h1>
+          <Stack align={'center'}>
+          <Heading fontSize={'4xl'}>Panel de admin de juegos</Heading>
+        </Stack>
           {games !== null ? games.map((e) => <Game key={e._id} gameItem={e}/>) : <p>Loading</p>}
           </div>
       </div>

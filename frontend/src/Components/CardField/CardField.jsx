@@ -2,7 +2,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
+import {
+  Button
+} from '@chakra-ui/react'
 // import Button from 'react-bootstrap/Button'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -26,11 +28,22 @@ function CardField ({ fieldItem }) {
   return (
     <Card className='col-4' style={{ width: '18rem', margin: '1em', padding: '1em' }}>
         <Card.Body>
-        <Card.Text>Dirección: {lugar}</Card.Text>
+        <Card.Text style={{ fontWeight: 'bolder' }}>{lugar}</Card.Text>
         <Card.Text>Cantidad de Jugadores: {cantidad_jugadores}</Card.Text>
-        <Button className='btn btn-danger' onClick={() => deleteGame(_id)} variant="primary">Eliminar Cancha</Button>
+        <Button style={{ marginRight: '0.5em' }}
+              colorScheme={'gray'}
+              variant={'solid'}
+               onClick={() => deleteGame(_id)}
+            >
+              Eliminar
+        </Button>
         <Link to={`/editField/${_id}`}>
-         <Button className='btn btn-light' variant="primary">Editar cancha</Button>
+        <Button
+              colorScheme={'blue'}
+              variant={'solid'}
+              >
+               Editar
+            </Button>
          </Link>
         {/* <Link to= { `/attendGame/${_id}` } state={{ data: gameItem }}>
         <Button className='btn btn-light' variant="primary">Asistir al juego</Button>

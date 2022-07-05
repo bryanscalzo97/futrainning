@@ -1,5 +1,17 @@
 import React, { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import {
+  Flex,
+  Box,
+  FormControl,
+  FormLabel,
+  Input,
+  Stack,
+  Button,
+  Heading,
+  useColorModeValue
+} from '@chakra-ui/react'
+import NavBar from '../NavBar/NavBar.jsx'
 
 function AttendGame () {
   const location = useLocation()
@@ -39,31 +51,47 @@ function AttendGame () {
     setMail(event.target.value)
   }
   return (
-    <div>
-        <h1>Lugar: {data.lugar}</h1>
-        <h2>Fecha: {data.fecha}</h2>
-        <h2>Jugadores:</h2>
-        {data.jugadores && data.jugadores.map((e) => <p key={e.nombre}>{e.nombre}</p>)}
-        <form onSubmit={handleSubmit}>
-                        <label>
-                            Nombre:
-                            <input
-                                type="text"
-                                onChange={handleNombre}
-                                value={name} />
-                        </label>
-                        <br />
-                        <label>
-                            Email:
-                            <input
-                                type="text"
-                                onChange={handleEmail}
-                                value={mail} />
-                        </label>
-                        <br />
-                        <button className='btn btn-primary' type="submit">Anotarme al juego</button>
-        </form>
-    </div>
+    <>
+    <NavBar />
+    <Flex
+      minH={'100vh'}
+      justify={'center'}
+      bg={useColorModeValue('gray.50', 'gray.800')}>
+      <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+        <Stack align={'center'}>
+          <Heading fontSize={'4xl'}>Asistir al juego</Heading>
+        </Stack>
+        <Box
+          rounded={'lg'}
+          bg={useColorModeValue('white', 'gray.700')}
+          boxShadow={'lg'}
+          p={8}>
+          <Stack spacing={4}>
+            <FormControl id="text">
+              <FormLabel>Nombre</FormLabel>
+              <Input type="text" onChange={handleNombre} value={name} required/>
+            </FormControl>
+            <FormControl id="email">
+              <FormLabel>Email</FormLabel>
+              <Input type="text" onChange={handleEmail} value={mail} required/>
+            </FormControl>
+            <Stack spacing={10}>
+              <Button
+                bg={'blue.400'}
+                color={'white'}
+                _hover={{
+                  bg: 'blue.500'
+                }}
+                onClick={handleSubmit}
+                >
+                Editar juego
+              </Button>
+            </Stack>
+          </Stack>
+        </Box>
+      </Stack>
+    </Flex>
+    </>
   )
 }
 export default AttendGame

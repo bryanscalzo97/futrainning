@@ -53,7 +53,7 @@ function PageLogin ({ onLogin }) {
           <h1>Bienvenido a Futraining</h1>
           <Heading fontSize={'2xl'}>Ingresa a tu cuenta</Heading>
           <FormControl id='email'>
-            <FormLabel htmlFor="email">Email:</FormLabel>
+            <FormLabel htmlFor="email">Email</FormLabel>
             <Input
               id="email"
               type="email"

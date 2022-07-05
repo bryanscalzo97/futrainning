@@ -1,5 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router'
+import {
+  Flex,
+  Box,
+  FormControl,
+  FormLabel,
+  Input,
+  Stack,
+  Button,
+  Heading,
+  useColorModeValue
+} from '@chakra-ui/react'
+import NavBarAdmin from '../NavBarAdmin/NavBarAdmin'
 
 function EditGame () {
   const params = useParams()
@@ -68,22 +80,45 @@ function EditGame () {
   }
 
   return (
-    <div>
-      <h1>Editar Juego</h1>
-      <form onSubmit={handleSubmit}>
-                <label>
-                    Fecha:
-                    <input
-                        type="datetime-local"
-                        onChange={handleDate}
-                        value={date} />
-                </label>
-                <br />
-                <label className='d-block'>Seleccionar Cancha</label>
-                           { field !== null ? (<select className="form-select" aria-label="Default select example" onChange={handleField} value={fieldSelected} required>{field.map((e) => <option key={e._id} value={e._id}>{e.lugar}</option>)}</select>) : ''}
-                <button className='btn btn-primary' type="submit">Editar Juego</button>
-    </form>
-    </div>
+    <>
+    <NavBarAdmin />
+    <Flex
+      minH={'100vh'}
+      justify={'center'}
+      bg={useColorModeValue('gray.50', 'gray.800')}>
+      <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+        <Stack align={'center'}>
+          <Heading fontSize={'4xl'}>Editar juego</Heading>
+        </Stack>
+        <Box
+          rounded={'lg'}
+          bg={useColorModeValue('white', 'gray.700')}
+          boxShadow={'lg'}
+          p={8}>
+          <Stack spacing={4}>
+            <FormControl id="email">
+              <FormLabel>Fecha</FormLabel>
+              <Input type="datetime-local" onChange={handleDate} value={date} required/>
+            </FormControl>
+            { field !== null ? (<select className="form-select" aria-label="Default select example" onChange={handleField} value={fieldSelected}> <option selected>Selecciona una cancha</option>{field.map((e) => <option key={e._id} value={e._id}>{e.lugar}</option>)}</select>) : ''}
+            <Stack spacing={10}>
+              <Button
+                bg={'blue.400'}
+                color={'white'}
+                _hover={{
+                  bg: 'blue.500'
+                }}
+                onClick={handleSubmit}
+                >
+                Editar juego
+              </Button>
+            </Stack>
+          </Stack>
+        </Box>
+      </Stack>
+    </Flex>
+    </>
+
   )
 }
 

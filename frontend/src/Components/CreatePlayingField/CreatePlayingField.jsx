@@ -2,6 +2,17 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
 import NavBarAdmin from '../NavBarAdmin/NavBarAdmin'
 import './styles.css'
+import {
+  Flex,
+  Box,
+  FormControl,
+  FormLabel,
+  Input,
+  Stack,
+  Button,
+  Heading,
+  useColorModeValue
+} from '@chakra-ui/react'
 
 function CreatePlayingField () {
   const [location, setLocation] = useState('')
@@ -39,24 +50,44 @@ function CreatePlayingField () {
   return (
   <>
   <NavBarAdmin />
-    <div className='container'>
-      <div className='row'>
-          <form onSubmit={handleSubmit} className=' formulario'>
-        <h1>Crear una nueva cancha</h1>
-                <label className='d-block'>Direccion:</label>
-                <input className='d-block'
-                        type="text"
-                        onChange={handleLocation}
-                        value={location} />
-                <label className='d-block'>Cantidad de Jugadores:</label>
-                <input className='d-block'
-                        type="number"
-                        onChange={handleNumJugadores}
-                        value={numJugadores} />
-                <button className='btn btn-primary d-block btn-submit' type="submit">Crear Cancha</button>
-          </form>
-      </div>
-    </div>
+  <Flex
+      minH={'100vh'}
+      justify={'center'}
+      bg={useColorModeValue('gray.50', 'gray.800')}>
+      <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+        <Stack align={'center'}>
+          <Heading fontSize={'4xl'}>Crear nueva Cancha</Heading>
+        </Stack>
+        <Box
+          rounded={'lg'}
+          bg={useColorModeValue('white', 'gray.700')}
+          boxShadow={'lg'}
+          p={8}>
+          <Stack spacing={4}>
+            <FormControl id="email">
+              <FormLabel>Direccion</FormLabel>
+              <Input type="text" onChange={handleLocation} value={location} required/>
+            </FormControl>
+            <FormControl id="email">
+              <FormLabel>Numero de jugadores</FormLabel>
+              <Input type="number" onChange={handleNumJugadores} value={numJugadores}/>
+            </FormControl>
+            <Stack spacing={10}>
+              <Button
+                bg={'blue.400'}
+                color={'white'}
+                _hover={{
+                  bg: 'blue.500'
+                }}
+                onClick={handleSubmit}
+                >
+                Crear cancha
+              </Button>
+            </Stack>
+          </Stack>
+        </Box>
+      </Stack>
+    </Flex>
   </>
   )
 }

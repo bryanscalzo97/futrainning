@@ -17,9 +17,14 @@ function NavBarAdmin () {
   return (
       <Navbar bg="light" expand="lg">
     <Container fluid>
-      <Navbar.Brand href="#">Futraining</Navbar.Brand>
+      <Link to="/">
+        <Navbar.Brand href="#">Futraining</Navbar.Brand>
+      </Link>
       <Link to="/createGame">
         <Navbar.Brand href="#">Crear Juego</Navbar.Brand>
+      </Link>
+      <Link to="/">
+        <Navbar.Brand href="#">Administrar Juegos</Navbar.Brand>
       </Link>
       <Link to="/createPlayingField">
         <Navbar.Brand href="#">Crear Cancha</Navbar.Brand>
