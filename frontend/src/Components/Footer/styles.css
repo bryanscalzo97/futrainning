@@ -1,11 +1,11 @@
 .footer {
-    background-color: #04020f;
+
     text-align: center;
 }
 
 .footer p,
 i {
-    color: white;
+    color: gray;
 }
 
 .footer p {
