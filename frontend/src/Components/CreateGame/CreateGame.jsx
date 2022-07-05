@@ -66,7 +66,7 @@ function CreateGame () {
                 <input className='d-block'
                         type="datetime-local"
                         onChange={handleDate}
-                        value={date} />
+                        value={date} required/>
                 <label className='d-block'>Seleccionar Cancha</label>
                            { field !== null ? (<select className="form-select" aria-label="Default select example" onChange={handleField} value={fieldSelected}> <option selected>Selecciona una cancha</option>{field.map((e) => <option key={e._id} value={e._id}>{e.lugar}</option>)}</select>) : ''}
                 <button className='btn btn-primary d-block btn-submit' type="submit">Crear Juego</button>

@@ -6,7 +6,11 @@ function Home () {
   const [games, setGames] = useState(null)
 
   useEffect(() => {
-    fetch('/api/Games')
+    fetch('/api/Games', {
+      headers: {
+        'auth-token': localStorage.getItem('token')
+      }
+    })
       .then(res => res.json())
       .then((data) => setGames(data))
   }, [])

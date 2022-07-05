@@ -27,8 +27,8 @@ function Game ({ gameItem }) {
   return (
       <Card className='col-4' style={{ width: '18rem', margin: '1em', padding: '1em' }}>
         <Card.Body>
-        <Card.Text>{fecha}</Card.Text>
-        <Card.Text>{lugarCancha}</Card.Text>
+        <Card.Text>Fecha: {fecha}</Card.Text>
+        <Card.Text>Dirección: {lugarCancha}</Card.Text>
         <Card.Text>Hacen falta {11 - jugadores.length} jugadores</Card.Text>
         <Button className='btn btn-danger' onClick={() => deleteGame(_id)} variant="primary">Eliminar Juego</Button>
          <Link to={`/editGame/${_id}`}>

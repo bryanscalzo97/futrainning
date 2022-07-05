@@ -71,14 +71,6 @@ function EditGame () {
     <div>
       <h1>Editar Juego</h1>
       <form onSubmit={handleSubmit}>
-                {/* <label>
-                    Lugar:
-                    <input
-                        type="text"
-                        onChange={handleLocation}
-                        value={location} />
-                </label>
-                <br /> */}
                 <label>
                     Fecha:
                     <input
