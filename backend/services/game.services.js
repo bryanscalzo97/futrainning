@@ -6,12 +6,12 @@ async function viewGames () {
     const games = await db.collection('juegos').find({}).toArray()
     for (let i = 0; i < games.length; i++) {
       const field = await db.collection('canchas').find({ _id: ObjectId(games[i].cancha) }).toArray()
-      console.log('estes es el campo' + field)
+      // console.log('estes es el campo' + field)
       games[i].lugarCancha = field[0].lugar
       games[i].cantidadJugadores = field[0].cantidad_jugadores
-      console.log(games[i].lugarCancha)
+      // console.log(games[i].lugarCancha)
     }
-    console.log(games)
+    // console.log(games)
     return games
   })
 }

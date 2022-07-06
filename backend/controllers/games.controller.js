@@ -76,7 +76,7 @@ function viewOne (req, res) {
 function updateGame (req, res) {
   const newGame = req.body
   const id = req.params.idGame
-  console.log(newGame)
+  // console.log(newGame)
   GameModel.updateGame(newGame, id)
     .then(function (game) {
       res.status(200).json(game)

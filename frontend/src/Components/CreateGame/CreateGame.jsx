@@ -37,7 +37,8 @@ function CreateGame () {
     const _datos = {
       // lugar: location,
       fecha: date,
-      idCancha: fieldSelected
+      idCancha: fieldSelected,
+      idAdmin: localStorage.getItem('_id')
     }
     fetch(('/api/Games'), {
       method: 'POST',

@@ -38,7 +38,7 @@ function EditField () {
       lugar: location,
       cantidad_jugadores: numJugadores
     }
-    fetch((`/api/Games/${params.idUser}`), {
+    fetch((`/api/fields/${params.idField}`), {
       method: 'PATCH',
       body: JSON.stringify(_datos),
       headers: {

@@ -74,7 +74,7 @@ function viewOne (req, res) {
 
 function updateField (req, res) {
   const dataField = req.body
-  const id = req.params.idGame
+  const id = req.params.idField
   FieldsModel.updateField(dataField, id)
     .then(function (field) {
       res.status(200).json(field)

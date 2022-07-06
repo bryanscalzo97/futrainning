@@ -18,7 +18,7 @@ function authorization (req, res, next) {
 
 async function isAdmin (req, res, next) {
   const userRole = await service.findByID(req.user.id)
-  console.log('este es el id del user' + req.user.id)
+  // console.log('este es el id del user' + req.user.id)
   if (userRole.role === 'admin') { next() } else {
     res.status(401).json({
       message: 'Unauthorized role'
