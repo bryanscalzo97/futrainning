@@ -84,7 +84,7 @@ function AttendGame () {
                 }}
                 onClick={handleSubmit}
                 >
-                Editar juego
+                Asistir al juego
               </Button>
             </Stack>
           </Stack>
