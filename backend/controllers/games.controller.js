@@ -1,6 +1,5 @@
 
 import * as GameModel from '../services/game.services.js'
-// import jwt from 'jsonwebtoken'
 
 function viewGames (req, res) {
   return GameModel.viewGames()
@@ -12,32 +11,6 @@ function viewGames (req, res) {
       }
     })
 }
-
-// function viewGames (req, res) {
-//   let token, user
-//   try {
-//     token = req.headers['auth-token'] || ''
-//     user = jwt.verify(token, 'CLAVE_SECRETA')
-//   } catch (err) {
-
-//   }
-
-//   if (user) {
-//     return GameModel.viewGames()
-//       .then(function (games) {
-//         if (games) {
-//           res.status(200).json(games)
-//         } else {
-//           res.status(404).json({ message: 'No se encontraron juegos' })
-//         }
-//       })
-//   } else {
-//     res.status(401).json({
-//       message: 'Unauthorizaded'
-//     })
-//   }
-//   GameModel.viewGames()
-// }
 
 function newGame (req, res) {
   const locationGame = req.body

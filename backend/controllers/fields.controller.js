@@ -1,6 +1,5 @@
 
 import * as FieldsModel from '../services/field.services.js'
-// import jwt from 'jsonwebtoken'
 
 function viewFields (req, res) {
   return FieldsModel.viewFields()
@@ -8,36 +7,10 @@ function viewFields (req, res) {
       if (fields) {
         res.status(200).json(fields)
       } else {
-        res.status(404).json({ message: 'No se encontraron juegos' })
+        res.status(404).json({ message: 'No se encontraron campos' })
       }
     })
 }
-
-// function viewGames (req, res) {
-//   let token, user
-//   try {
-//     token = req.headers['auth-token'] || ''
-//     user = jwt.verify(token, 'CLAVE_SECRETA')
-//   } catch (err) {
-
-//   }
-
-//   if (user) {
-//     return GameModel.viewGames()
-//       .then(function (games) {
-//         if (games) {
-//           res.status(200).json(games)
-//         } else {
-//           res.status(404).json({ message: 'No se encontraron juegos' })
-//         }
-//       })
-//   } else {
-//     res.status(401).json({
-//       message: 'Unauthorizaded'
-//     })
-//   }
-//   GameModel.viewGames()
-// }
 
 function newField (req, res) {
   const dataField = req.body

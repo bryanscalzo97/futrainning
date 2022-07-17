@@ -1,0 +1,27 @@
+[{
+  "_id": {
+    "$oid": "62c0947d8592db4115664e0f"
+  },
+  "lugar": "Almagro",
+  "cantidad_jugadores": 11,
+  "email": "lacancha@gmail.com",
+  "direccion": "Av. Corrientes 5000"
+},{
+  "_id": {
+    "$oid": "62c30bc73184bea863b70f21"
+  },
+  "lugar": "corrientes 2000",
+  "cantidad_jugadores": "11"
+},{
+  "_id": {
+    "$oid": "62c5fea37bc4567f8cd5bc92"
+  },
+  "lugar": "Av corrientes 5000",
+  "cantidad_jugadores": "12"
+},{
+  "_id": {
+    "$oid": "62c600b6aaa76eacae66d807"
+  },
+  "lugar": "Av corrientes 3500",
+  "cantidad_jugadores": "24"
+}]

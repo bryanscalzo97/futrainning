@@ -12,43 +12,74 @@
     {
       "nombre": "Ronaldo",
       "email": "ronaldo@gmail.com"
+    },
+    {
+      "_id": {
+        "$oid": "62c07c9418b016c3d006e1f6"
+      },
+      "nombre": "nombre",
+      "email": "maradona@gmail.com"
+    },
+    {
+      "_id": {
+        "$oid": "62c07f8818b016c3d006e1f9"
+      },
+      "nombre": "maradona",
+      "email": "maradona@gmail.com"
+    },
+    {
+      "_id": {
+        "$oid": "62c425d218f9a176231c2542"
+      },
+      "nombre": "wrgwer",
+      "email": "ergerg"
     }
-  ]
+  ],
+  "cancha": "62c30bc73184bea863b70f21"
 },{
   "_id": {
-    "$oid": "62bba450df60114aaf9accb4"
+    "$oid": "62c4296d18f9a176231c2545"
   },
-  "lugar": "CABA",
-  "fecha": "2022-06-22T01:05",
+  "fecha": "2022-07-13T12:11",
   "jugadores": [
     {
-      "nombre": "messi",
-      "email": "messi@gmail.com"
-    },
-    {
-      "nombre": "Ronaldo",
-      "email": "ronaldo@gmail.com"
-    },
-    {
       "_id": {
-        "$oid": "62bba47fdf60114aaf9accb5"
+        "$oid": "62c5df48df088c450b3c9393"
       },
-      "nombre": "Bryan ",
-      "email": "bryan@gmail.com"
-    },
-    {
-      "_id": {
-        "$oid": "62bc3df6df60114aaf9accb7"
-      },
-      "nombre": "zidane",
-      "email": "zidane@gmail.com"
+      "nombre": "Bryan",
+      "email": "hola5@hola.com"
     }
-  ]
+  ],
+  "cancha": "62c30bc73184bea863b70f21"
 },{
   "_id": {
-    "$oid": "62bc3e2a20be22a81e55b72b"
+    "$oid": "62c5e2a57bc4567f8cd5bc87"
   },
-  "lugar": "Colegiales",
-  "fecha": "2022-06-21T10:01",
-  "jugadores": []
+  "fecha": "2022-07-19T16:29",
+  "jugadores": [
+    {
+      "_id": {
+        "$oid": "62c5ff0a7bc4567f8cd5bc95"
+      },
+      "nombre": "prueba",
+      "email": "prueba@gmailc.om"
+    },
+    {
+      "_id": {
+        "$oid": "62c6014daaa76eacae66d80a"
+      },
+      "nombre": "Bryan",
+      "email": "bryan@gmail.com"
+    }
+  ],
+  "cancha": {
+    "$oid": "62c0947d8592db4115664e0f"
+  }
+},{
+  "_id": {
+    "$oid": "62c5feb67bc4567f8cd5bc93"
+  },
+  "fecha": "2022-07-12T21:33",
+  "jugadores": [],
+  "cancha": "62c30bc73184bea863b70f21"
 }]

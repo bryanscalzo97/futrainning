@@ -30,6 +30,7 @@ async function removeField (id) {
 async function findByID (id) {
   return conexion(async function (db) {
     const field = await db.collection('canchas').find({ _id: ObjectId(id) }).toArray()
+    // usar funcion findOne
     return field[0]
   })
 }

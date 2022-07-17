@@ -1,5 +1,6 @@
+/* eslint-disable no-useless-escape */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Flex,
   Stack,
@@ -20,6 +21,15 @@ function PageLogin ({ onLogin }) {
   const [mail, setMail] = useState('')
   const [contraseña, setContraseña] = useState('')
   const [rol, setRol] = useState('jugador')
+  const [error, setError] = useState('')
+  const [errorPassword, setErrorPassword] = useState('')
+  const [errorMail, setErrorMail] = useState('')
+
+  useEffect(() => {
+    setError('')
+    setErrorPassword('')
+    setErrorMail('')
+  }, [])
 
   function SignUp (e) {
     e.preventDefault()
@@ -38,7 +48,7 @@ function PageLogin ({ onLogin }) {
     })
       .then(response => response.json())
       .then(json => console.log(json))
-      .then(alert('Se creo el juego correctamente'))
+      .then(alert('Se creo el usuario correctamente'))
       .then(authService.login(mail, contraseña)
         .then((data) => {
           console.log('data', data)
@@ -54,12 +64,17 @@ function PageLogin ({ onLogin }) {
         console.log('data', data)
         onLogin(data.user, data.token)
       })
-      .catch(err => console.log(err.message))
+      .catch(err => setError(err.message))
   }
 
   function handleSubmit (e) {
     e.preventDefault()
-    isUser === false ? SignUp(e) : Login(e)
+    if (contraseña.length < 3) {
+      setErrorPassword('La contraseña debe tener más de 4 caracteres')
+    }
+    if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(mail)) {
+      isUser === false ? SignUp(e) : Login(e)
+    } else { setErrorMail('Ingresa un mail correcto') }
   }
 
   function handleRol (selected) {
@@ -71,7 +86,7 @@ function PageLogin ({ onLogin }) {
       <Stack spacing={4} w={'full'} maxW={'md'}>
           <h1>Bienvenido a Futraining</h1>
           {isUser === false ? <Heading fontSize={'2xl'}>Registrate</Heading> : <Heading fontSize={'2xl'}>Login</Heading>}
-          <FormControl id='email'>
+          <FormControl id='email' isRequired>
             <FormLabel htmlFor="email">Email</FormLabel>
             <Input
               id="email"
@@ -97,7 +112,6 @@ function PageLogin ({ onLogin }) {
             ? <FormControl id="select">
                 <FormLabel>Selecciona tu rol</FormLabel>
                   <Select placeholder='Selecciona el rol' onChange={handleRol} value={rol}>
-                    <option value='admin'>Administrador</option>
                     <option value='jugador'>Jugador</option>
                   </Select>
                 </FormControl>
@@ -126,7 +140,9 @@ function PageLogin ({ onLogin }) {
               ¿Quieres registrarte?
             </Button>}
           </Stack>
-          {/* {error && <p>{error}</p>} */}
+          {error && <p>{error}</p>}
+          {errorPassword && <p>{errorPassword}</p>}
+          {errorMail && <p>{errorMail}</p>}
         <Footer />
         </Stack>
       </Flex>

@@ -10,6 +10,10 @@ app.use(express.json()) // ParseBody cuando viene en formato JSON
 app.use('/api/Games', GameRoute)
 app.use('/api/users', UserRoute)
 app.use('/api/fields', FieldsRoute)
+// Final:
+// utilizar mail(olvide password) o socket(notificaciones de quien se anoto al juego o chat)
+// usar use context
+// usar 2 de las 3 anteriores
 
 app.listen(2022, function () {
 

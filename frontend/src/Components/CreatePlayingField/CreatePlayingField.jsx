@@ -17,27 +17,32 @@ import {
 function CreatePlayingField () {
   const [location, setLocation] = useState('')
   const [numJugadores, setNumJugadores] = useState('')
+  const [error, setError] = useState('')
 
   const navigate = useNavigate()
 
   function handleSubmit (event) {
     event.preventDefault()
-    const _datos = {
-      lugar: location,
-      cantidad_jugadores: numJugadores
-    }
-    fetch(('/api/fields'), {
-      method: 'POST',
-      body: JSON.stringify(_datos),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-        'auth-token': localStorage.getItem('token')
+    if (location === '' || numJugadores === '') {
+      setError('Por favor ingresa la fecha y el lugar del juego')
+    } else {
+      const _datos = {
+        lugar: location,
+        cantidad_jugadores: numJugadores
       }
-    })
-      .then(response => response.json())
-      .then(json => console.log(json))
-      .then(alert('Se creo la cancha correctamente'))
-      .then(navigate('/pageFields'))
+      fetch(('/api/fields'), {
+        method: 'POST',
+        body: JSON.stringify(_datos),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+          'auth-token': localStorage.getItem('token')
+        }
+      })
+        .then(response => response.json())
+        .then(json => console.log(json))
+        .then(alert('Se creo la cancha correctamente'))
+        .then(navigate('/pageFields'))
+    }
   }
 
   function handleLocation (event) {
@@ -64,11 +69,11 @@ function CreatePlayingField () {
           boxShadow={'lg'}
           p={8}>
           <Stack spacing={4}>
-            <FormControl id="email">
+            <FormControl id="text" isRequired>
               <FormLabel>Direccion</FormLabel>
               <Input type="text" onChange={handleLocation} value={location} required/>
             </FormControl>
-            <FormControl id="email">
+            <FormControl id="number" isRequired>
               <FormLabel>Numero de jugadores</FormLabel>
               <Input type="number" onChange={handleNumJugadores} value={numJugadores}/>
             </FormControl>
@@ -85,6 +90,7 @@ function CreatePlayingField () {
               </Button>
             </Stack>
           </Stack>
+          {error && <p>{error}</p>}
         </Box>
       </Stack>
     </Flex>

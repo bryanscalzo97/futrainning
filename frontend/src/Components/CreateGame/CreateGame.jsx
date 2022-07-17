@@ -12,13 +12,15 @@ import {
   Stack,
   Button,
   Heading,
-  useColorModeValue
+  useColorModeValue,
+  SelectField
 } from '@chakra-ui/react'
 
 function CreateGame () {
   const [date, setDate] = useState('')
   const [field, setField] = useState(null)
   const [fieldSelected, setfieldSelected] = useState('')
+  const [error, setError] = useState('')
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -34,24 +36,27 @@ function CreateGame () {
 
   function handleSubmit (event) {
     event.preventDefault()
-    const _datos = {
-      // lugar: location,
-      fecha: date,
-      idCancha: fieldSelected,
-      idAdmin: localStorage.getItem('_id')
-    }
-    fetch(('/api/Games'), {
-      method: 'POST',
-      body: JSON.stringify(_datos),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-        'auth-token': localStorage.getItem('token')
+    if (date === '' || SelectField === '') {
+      setError('Por favor ingresa la fecha y el lugar del juego')
+    } else {
+      const _datos = {
+        fecha: date,
+        idCancha: fieldSelected,
+        idAdmin: localStorage.getItem('_id')
       }
-    })
-      .then(response => response.json())
-      .then(json => console.log(json))
-      .then(alert('Se creo el juego correctamente'))
-      .then(navigate('/'))
+      fetch(('/api/Games'), {
+        method: 'POST',
+        body: JSON.stringify(_datos),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+          'auth-token': localStorage.getItem('token')
+        }
+      })
+        .then(response => response.json())
+        .then(json => console.log(json))
+        .then(alert('Se creo el juego correctamente'))
+        .then(navigate('/'))
+    }
   }
 
   function handleDate (event) {
@@ -78,11 +83,11 @@ function CreateGame () {
           boxShadow={'lg'}
           p={8}>
           <Stack spacing={4}>
-            <FormControl id="email">
+            <FormControl id="datetime-local" isRequired>
               <FormLabel>Fecha</FormLabel>
-              <Input type="datetime-local" onChange={handleDate} value={date} required/>
+              <Input type="datetime-local" onChange={handleDate} value={date} />
             </FormControl>
-            { field !== null ? (<select className="form-select" aria-label="Default select example" onChange={handleField} value={fieldSelected}> <option selected>Selecciona una cancha</option>{field.map((e) => <option key={e._id} value={e._id}>{e.lugar}</option>)}</select>) : ''}
+            { field !== null ? (<select className="form-select" aria-label="Default select example" onChange={handleField} value={fieldSelected} isRequired> <option selected>Selecciona una cancha</option>{field.map((e) => <option key={e._id} value={e._id}>{e.lugar}</option>)}</select>) : ''}
             <Stack spacing={10}>
               <Button
                 bg={'blue.400'}
@@ -96,6 +101,7 @@ function CreateGame () {
               </Button>
             </Stack>
           </Stack>
+      {error && <p>{error}</p>}
         </Box>
       </Stack>
     </Flex>

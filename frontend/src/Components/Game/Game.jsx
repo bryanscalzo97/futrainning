@@ -26,7 +26,7 @@ function Game ({ gameItem }) {
   console.log(jugadores)
   // const token = localStorage.getItem('token')
   return (
-      <Card className='col-4' style={{ width: '18rem', margin: '1em', padding: '0.5em' }}>
+      <Card className='col-md-12 col-lg-12' style={{ width: '18rem', margin: '1em', padding: '0.5em' }}>
         <Card.Body>
         <Card.Text style={{ fontWeight: 'bolder' }}>{lugarCancha}</Card.Text>
         <Card.Text>{fecha}</Card.Text>

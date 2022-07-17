@@ -4,5 +4,48 @@
   },
   "email": "bryan@gmail.com",
   "password": "$2b$10$7N6SQ4val4S9p6ja/iGiFegBDjO73TIpqJAK6VliWmNjnmUJD76Yu",
-  "name": "Bryan Scalzo"
+  "name": "Bryan Scalzo",
+  "role": "admin"
+},{
+  "_id": {
+    "$oid": "62c0548ee4875157d87d54a2"
+  },
+  "email": "maradona@gmail.com",
+  "password": "$2b$10$3E8BzpD7qX2GJmYM.lfCDOhBawz3Narpqbloe.KXjeMU7tc.EeJ4u",
+  "role": "user"
+},{
+  "_id": {
+    "$oid": "62c5df3edf088c450b3c9392"
+  },
+  "email": "rgwerg",
+  "password": "$2b$10$AS4kdJ35E0o/KQo1CFStQuvCS7P4bvUwA3qNJitOjMzWWmcs3qIYq",
+  "role": "jugador"
+},{
+  "_id": {
+    "$oid": "62c5df74df088c450b3c9394"
+  },
+  "email": "hola5@hola.com",
+  "password": "$2b$10$pzxa925n3oZQqMGFR4ls7eTbTRh1FnYDQnNqw/ptSAyZIzc7jqqHu",
+  "role": "admin"
+},{
+  "_id": {
+    "$oid": "62c5e007df088c450b3c9395"
+  },
+  "email": "hola1@hola1.com",
+  "password": "$2b$10$sSf7epjiTQgMZbBjuPU9fOtcr5KufOOsUKTBLvISDmNiUt0H2LvYu",
+  "role": "admin"
+},{
+  "_id": {
+    "$oid": "62c5fef17bc4567f8cd5bc94"
+  },
+  "email": "prueba@gmailc.om",
+  "password": "$2b$10$uPCBxJIPguXht9G.RxTO.uAZRNJXt/o4q7JDQy//HvP5V2sz7P4uO",
+  "role": "jugador"
+},{
+  "_id": {
+    "$oid": "62c60114aaa76eacae66d809"
+  },
+  "email": "laprueba@gmail.com",
+  "password": "$2b$10$XnZmJTv5VdYaxW9LgnyiQO4Lm.Pr0F3W3Lff5.2tB9PIPCM9XZhlG",
+  "role": "jugador"
 }]
